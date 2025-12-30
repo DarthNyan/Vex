@@ -28,10 +28,13 @@ int main() {
 
     Brain.Screen.printAt( 10, 50, "Calibrating" );
     Gyro.calibrate(3);
+    Gyro.resetHeading();
+    auto drive = MechanumDrive( PID( 5.0, 0, 0) );
    
     while(1) {
         
         // Allow other tasks to run
         this_thread::sleep_for(10);
+        drive.move( joysticks() );
     }
 }

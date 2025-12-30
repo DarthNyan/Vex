@@ -8,9 +8,10 @@
 
 class MechanumDrive {
 public:
-    MechanumDrive(PID _turn_pid = PID( MOTOR_HIGH_VOLTAGE/M_PI, 0, 0) ) {
+    MechanumDrive( PID _turn_pid ) {
         drivespeed = {0, 0, 0, 0};
         turn_pid = _turn_pid;
+        last_heading = gyroHeading();
     }
     void
     move( ControllerAxes axes );
